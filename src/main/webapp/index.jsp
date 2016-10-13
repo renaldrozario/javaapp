@@ -86,7 +86,7 @@
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<h1>ClAutomation</h1>
+					<h1>Automation</h1>
 					<p>Infrastructure as a code for seamless and zero touch deployments.</p>
 					<p><a class="btn btn-primary" href="#">Engage Now</a></p>
 				</div>
