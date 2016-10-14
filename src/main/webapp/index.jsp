@@ -153,7 +153,7 @@
 
             <article class="col-md-4 article-intro">
                 <a href="#">
-                    <img class="img-responsive img-rounded" src="pictures/DevOps.png" alt="">
+                    <img class="img-responsive img-rounded" src="pictures/Devops.png" alt="">
                 </a>
                 <h3>
                     <a href="#">DevOps</a>
