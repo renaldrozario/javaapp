@@ -92,7 +92,7 @@
 					<p><a class="btn btn-primary" href="#">Engage Now</a></p>
 				</div>
 				<div class="item">
-					<h1>DevOps</h1>
+					<h1>WTW DevOps</h1>
 					<p>A complete DevOps approach.</p>
 					<p><a class="btn btn-primary" href="#">Engage Now</a></p>
 				</div>
