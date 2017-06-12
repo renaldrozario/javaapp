@@ -1,23 +1,54 @@
 {
-"taskDefinition": {
-    "volumes": [],
-    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:016866562124:task-definition/trial:1",
-    "containerDefinitions": [
+  "requiresAttributes": [
+    {
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.ecr-auth",
+      "targetId": null,
+      "targetType": null
+    }
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:016866562124:task-definition/trial:1",
+  "networkMode": "bridge",
+  "status": "ACTIVE",
+  "revision": 1,
+  "taskRoleArn": null,
+  "containerDefinitions": [
+    {
+      "volumesFrom": [],
+      "memory": 500,
+      "extraHosts": null,
+      "dnsServers": null,
+      "disableNetworking": null,
+      "dnsSearchDomains": null,
+      "portMappings": [
         {
-            "name": "trial",
-            "image": "https://016866562124.dkr.ecr.ap-northeast-1.amazonaws.com/trial:latest",
-            "cpu": 10,
-            "portMappings": [
-                {
-                    "containerPort": 8080,
-                    "hostPort": 80
-                }
-            ],
-            "memory": 500,
-            "essential": true
+          "hostPort": 80,
+          "containerPort": 8080,
+          "protocol": "tcp"
         }
-    ],
-    "family": "trial",
-    "revision": 1
-}
+      ],
+      "hostname": null,
+      "essential": true,
+      "entryPoint": null,
+      "mountPoints": [],
+      "name": "trial",
+      "ulimits": null,
+      "dockerSecurityOptions": null,
+      "environment": [],
+      "links": null,
+      "workingDirectory": null,
+      "readonlyRootFilesystem": null,
+      "image": "016866562124.dkr.ecr.ap-northeast-1.amazonaws.com/trial:latest",
+      "command": null,
+      "user": null,
+      "dockerLabels": null,
+      "logConfiguration": null,
+      "cpu": 10,
+      "privileged": null,
+      "memoryReservation": null
+    }
+  ],
+  "placementConstraints": [],
+  "volumes": [],
+  "family": "trial"
 }
