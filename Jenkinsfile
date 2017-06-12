@@ -7,6 +7,7 @@ node {
         def docker_hub_account = 'hapx'
         def docker_hub_repo = 'trial'
         def aws_ecr_repo_key = 'c7d52f05-c3ad-4001-a188-17d44560f4b3'
+        def aws_cli_home = '~/.local/bin/'
         
         stage 'SCM polling'
         git url: 'https://github.com/hapx101/javaapp.git'
@@ -32,5 +33,5 @@ node {
         }
         
         stage 'ECS task definition'
-        sh 'aws ecs register-task-definition --cli-input-json file://task_definition.json'
+        sh "${aws_cli_home}/aws ecs register-task-definition --cli-input-json file://task_definition.json"
 }
