@@ -17,7 +17,7 @@ node {
 
         stage 'Docker image build'
         def pkg = docker.build ("${docker_hub_account}/${docker_hub_repo}", '.')
-        def aws_pkg = docker.build ("${docker_ecr_repo}", '.')
+        def aws_pkg = docker.build ("${aws_ecr_repo}", '.')
 
         stage 'DockerHub Push'
         docker.withRegistry ('https://index.docker.io/v1', "${docker_hub_key}") {
