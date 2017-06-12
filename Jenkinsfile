@@ -11,7 +11,7 @@ node {
         def pkg = docker.build ('hapx/trial', '.')
 
         stage 'DockerHub Push'
-        docker.withRegistry ('', "${docker_hub_key}") {
+        docker.withRegistry ('https://index.docker.io/v1', "${docker_hub_key}") {
                 sh 'ls -lart'
                 pkg.push 'latest'
         }
