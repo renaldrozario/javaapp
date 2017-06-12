@@ -7,7 +7,7 @@ node {
         def docker_hub_account = 'hapx'
         def docker_hub_repo = 'trial'
         def aws_ecr_repo_key = 'c7d52f05-c3ad-4001-a188-17d44560f4b3'
-        def aws_cli_home = '/root/.local/bin/'
+        def aws_cli_home = '/opt/.local/bin'
         
         stage 'SCM polling'
         git url: 'https://github.com/hapx101/javaapp.git'
