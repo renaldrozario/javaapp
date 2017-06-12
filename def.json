@@ -1,0 +1,18 @@
+{
+    "family": "trial",
+    "containerDefinitions": [
+        {
+            "image": "016866562124.dkr.ecr.ap northeast 1.amazonaws.com/trial:latest",
+            "name": "trial",
+            "cpu": 10,
+            "memory": 400,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 80
+                }
+            ]
+        }
+    ]
+}
