@@ -2,7 +2,7 @@
     "family": "trial",
     "containerDefinitions": [
         {
-            "image": "016866562124.dkr.ecr.ap northeast 1.amazonaws.com/trial:latest",
+            "image": "016866562124.dkr.ecr.ap-northeast-1.amazonaws.com/trial:latest",
             "name": "trial",
             "cpu": 10,
             "memory": 400,
