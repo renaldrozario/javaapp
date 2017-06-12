@@ -33,5 +33,5 @@ node {
         }
         
         stage 'ECS task definition'
-        sh "${aws_cli_home}/aws ecs register-task-definition --cli-input-json file://task_definition.json"
+        sh "${aws_cli_home}/aws ecs register-task-definition --cli-input-json file://def.json"
 }
