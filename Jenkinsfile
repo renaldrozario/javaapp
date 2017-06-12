@@ -34,4 +34,7 @@ node {
         
         stage 'ECS task definition'
         sh "${aws_cli_home}/aws ecs register-task-definition --cli-input-json file://def.json"
+        
+        stage 'ECS service definition'
+        sh "${aws_cli_home}/aws ecs create-service --cluster trial --service-name trial --task-definition trial --role ecs-service-role --desired-count 1"
 }
