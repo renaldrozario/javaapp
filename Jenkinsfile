@@ -1,7 +1,7 @@
 node {
         def docker_hub_key = 7e8d43a5-00ea-43b9-b6d4-8f1bfe7b5e40
         stage 'SCM polling'
-        git poll: true, url: 'https://github.com/hapx101/javaapp.git'
+        git url: 'https://github.com/hapx101/javaapp.git'
 
         stage 'Maven build'
         sh 'mvn clean install'
