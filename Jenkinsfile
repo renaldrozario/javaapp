@@ -3,7 +3,7 @@ node {
         def maven_home = '/opt/apache-maven-3.5.0/bin'
         def aws_ecr_account_url = 'https://016866562124.dkr.ecr.ap-northeast-1.amazonaws.com'
         def aws_ecr_repo = 'trial'
-        def aws_ecr_repo_url = "${aws_ecr_account_url}/${trial}"
+        def aws_ecr_repo_url = "${aws_ecr_account_url}/${aws_ecr_repo}"
         def docker_hub_account = 'hapx'
         def docker_hub_repo = 'trial'
         def aws_ecr_repo_key = 'c7d52f05-c3ad-4001-a188-17d44560f4b3'
