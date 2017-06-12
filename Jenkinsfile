@@ -31,6 +31,6 @@ node {
                 aws_pkg.push 'latest'
         }
         
-        stage 'ECS deploy'
-        sh 'ecs-deploy -c "${docker_hub_repo}" -n 'java-app' -i "${aws_ecr_account_url}/${aws_ecr_repo}:latest"'
+        stage 'ECS task definition'
+        sh 'aws ecs register-task-definition --cli-input-json file://task_definition.json'
 }
