@@ -27,13 +27,14 @@ node {
         }
         
         stage 'AWS ECR image push'
+        sh "${aws_cli_home}/aws ecr get-login"
         docker.withRegistry ("${aws_ecr_account_url}/${aws_ecr_repo}", "ecr:ap-northeast-1:${aws_ecr_repo_key}") {
                 sh 'ls -lart'
                 aws_pkg.push 'latest'
         }
         
         stage 'ECS task definition'
-        sh "${aws_cli_home}/aws ecs register-task-definition --cli-input-json file://def.json"
+        sh "${aws_cli_home}/aws ecs register-task-definition --cli-input-json file://task_definition.json"
         
         stage 'ECS service definition'
         sh "${aws_cli_home}/aws ecs create-service --cluster trial --service-name trial --task-definition trial --desired-count 1"
