@@ -41,7 +41,7 @@ node {
         
         stage 'ECS service definition'
         def service_script = "${aws_cli_home}/aws ecs list-services --cluster trial | grep 'service/${aws_ecs_service_name}'"
-        def service_status = sh(returnStdout: true, script: "set +e; ${service_script}")
+        def service_status = sh(returnStdout: true, script: "${service_script} || true") 
         if ("${service_status}" != '') {
                 service_value = 'update'
                 service_option = '--service'
