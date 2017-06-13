@@ -10,6 +10,7 @@ node {
         def aws_cli_home = '~/.local/bin'
         def aws_ecs_service_name = 'trial'
         def service_value = 'create'
+        def service_option = '--service-name'
         
         stage 'SCM polling'
         git url: 'https://github.com/hapx101/javaapp.git'
@@ -43,6 +44,7 @@ node {
         def service_status = sh(returnStdout: true, script: "${service_script}")
         if ("${service_status}" != '') {
                 service_value = 'update'
+                service_option = '--service"
         }
-        sh "${aws_cli_home}/aws ecs ${service_value}-service --cluster trial --service-name ${aws_ecs_service_name} --task-definition trial --desired-count 1"
+        sh "${aws_cli_home}/aws ecs ${service_value}-service --cluster trial ${service_option} ${aws_ecs_service_name} --task-definition trial --desired-count 1"
 }
