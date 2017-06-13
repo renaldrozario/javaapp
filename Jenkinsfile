@@ -8,6 +8,7 @@ node {
         def docker_hub_repo = 'trial'
         def aws_ecr_repo_key = 'c7d52f05-c3ad-4001-a188-17d44560f4b3'
         def aws_cli_home = '~/.local/bin'
+        def aws_ecs_service_name = 'trial'
         
         stage 'SCM polling'
         git url: 'https://github.com/hapx101/javaapp.git'
@@ -37,5 +38,11 @@ node {
         sh "${aws_cli_home}/aws ecs register-task-definition --cli-input-json file://task_definition.json"
         
         stage 'ECS service definition'
-        sh "${aws_cli_home}/aws ecs create-service --cluster trial --service-name trial --task-definition trial --desired-count 1"
+        service_status = sh(returnStdout: true, script: "${aws_cli_home}/aws ecs list-services --cluster trial | grep 'service/${aws_ecs_service_name}'").trim()
+        if (service_status != '') {
+                def service_value = 'update'
+        } else {
+                def service_value = 'create'
+        }
+        sh "${aws_cli_home}/aws ecs ${service_value}-service --cluster trial --service-name ${aws_ecs_service_name} --task-definition trial --desired-count 1"
 }
