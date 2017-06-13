@@ -27,7 +27,7 @@ node {
         }
         
         stage 'AWS ECR image push'
-        sh "${aws_cli_home}/aws ecr get-login"
+        sh "${aws_cli_home}/aws ecr get-login --no-include-email --region ap-northeast-1"
         docker.withRegistry ("${aws_ecr_account_url}/${aws_ecr_repo}", "ecr:ap-northeast-1:${aws_ecr_repo_key}") {
                 sh 'ls -lart'
                 aws_pkg.push 'latest'
