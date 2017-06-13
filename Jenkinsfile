@@ -9,6 +9,7 @@ node {
         def aws_ecr_repo_key = 'c7d52f05-c3ad-4001-a188-17d44560f4b3'
         def aws_cli_home = '~/.local/bin'
         def aws_ecs_service_name = 'trial'
+        def service_value = 'create'
         
         stage 'SCM polling'
         git url: 'https://github.com/hapx101/javaapp.git'
@@ -40,11 +41,8 @@ node {
         stage 'ECS service definition'
         def service_script = "${aws_cli_home}/aws ecs list-services --cluster trial | grep 'service/${aws_ecs_service_name}'"
         def service_status = sh(returnStdout: true, script: "${service_script}")
-        echo "${service_status}"
-        if (service_status != '') {
-                def service_value = 'update'
-        } else {
-                def service_value = 'create'
+        if ("${service_status}" != '') {
+                service_value = 'update'
         }
         sh "${aws_cli_home}/aws ecs ${service_value}-service --cluster trial --service-name ${aws_ecs_service_name} --task-definition trial --desired-count 1"
 }
