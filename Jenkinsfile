@@ -38,7 +38,9 @@ node {
         sh "${aws_cli_home}/aws ecs register-task-definition --cli-input-json file://task_definition.json"
         
         stage 'ECS service definition'
-        service_status = sh(returnStdout: true, script: "${aws_cli_home}/aws ecs list-services --cluster trial | grep 'service/${aws_ecs_service_name}'").trim()
+        def service_script = "${aws_cli_home}/aws ecs list-services --cluster trial | grep 'service/${aws_ecs_service_name}'"
+        echo "${service_script}"
+        service_status = sh(returnStdout: true, script: "${service_script}")
         if (service_status != '') {
                 def service_value = 'update'
         } else {
