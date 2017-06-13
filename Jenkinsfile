@@ -44,7 +44,7 @@ node {
         def service_status = sh(returnStdout: true, script: "${service_script}")
         if ("${service_status}" != '') {
                 service_value = 'update'
-                service_option = '--service"
+                service_option = '--service'
         }
         sh "${aws_cli_home}/aws ecs ${service_value}-service --cluster trial ${service_option} ${aws_ecs_service_name} --task-definition trial --desired-count 1"
 }
